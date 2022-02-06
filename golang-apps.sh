@@ -1,0 +1,75 @@
+################################################################
+# Install golang
+#################################################################
+## Download go
+wget https://golang.org/dl/go1.17.6.linux-amd64.tar.gz
+
+## Extract to /usr/local/go
+sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.17.6.linux-amd64.tar.gz
+
+## Add /usr/local/go/bin to the PATH environment variable
+export PATH=$PATH:/usr/local/go/bin
+
+## Verify go is installed
+go version
+
+#################################################################
+# Install lazydocker
+# A simple terminal UI for both docker and docker-compose, written in Go with the gocui library.
+#################################################################
+go install github.com/jesseduffield/lazydocker@latest
+
+########################################################
+# K9s - Kubernetes CLI To Manage Your Clusters In Style!
+########################################################
+go get -u github.com/derailed/k9s
+
+########################################################
+# Install cointop - https://github.com/cointop-sh/cointop
+#-------------------------------------------------------
+# a fast and lightweight interactive terminal based UI
+# application for tracking and monitoring 
+# cryptocurrency coin stats in real-time.
+########################################################
+go get github.com/cointop-sh/cointop
+
+
+########################################
+# Install smug 
+# - a tmux session manager written in go
+########################################
+
+mkdir ~/source/smug
+git clone https://github.com/ivaaaan/smug.git ~/source/smug
+cd ~/source/smug
+go install
+
+#################################################################
+# lazygit
+# A simple terminal UI for git commands
+# https://github.com/jesseduffield/lazygit
+#################################################################
+go install github.com/jesseduffield/lazygit@latest
+
+#################################################################
+# slack-term
+# a slack client for your terminal
+# https://github.com/erroneousboat/slack-term
+#################################################################
+go get -u github.com/erroneousboat/slack-term
+cd $GOPATH/src/github.com/erroneousboat/slack-term
+go install .
+
+#################################################################
+# goreader 
+# epub terminal reader
+# https://github.com/taylorskalyo/goreader
+#################################################################
+go install github.com/taylorskalyo/goreader@latest
+
+#################################################################
+# tdash
+# A terminal dashboard with stats from Google Analytics, GitHub, Travis CI, and Jenkins.
+#################################################################
+go get github.com/jessfraz/tdash
+
