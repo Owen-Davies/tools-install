@@ -7,7 +7,6 @@ echo -e "\e[34m»»» 📦 \e[32mInstalling \e[33mBase Core Packages\e[0m ..."
 
 sudo apt-get update -y -qq
 sudo apt-get install -y \
-  vim-gtk3 \
   git \
   net-tools \
   htop \

@@ -25,6 +25,12 @@ go install github.com/jesseduffield/lazydocker@latest
 go get -u github.com/derailed/k9s
 
 ########################################################
+# Vimwiki-GoDown - Vimwiki-GoDown is a Markdown to HTML converter for .md files that were created with Vimwiki.
+# https://github.com/maqiv/vimwiki-godown 
+########################################################
+go get "github.com/maqiv/vimwiki-godown"
+
+########################################################
 # Install cointop - https://github.com/cointop-sh/cointop
 #-------------------------------------------------------
 # a fast and lightweight interactive terminal based UI
