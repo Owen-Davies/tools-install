@@ -10,8 +10,8 @@ echo -e "\e[34m»»» 📦 \e[32mInstalling \e[33m$NAME v$VERSION\e[0m ..."
 # INSTALL STEPS HERE
 
 sudo apt-get update
-sudo apt install x2goserver x2goserver-xsession
-sudo apt install xfce4
+sudo apt install x2goserver x2goserver-xsession -y
+sudo apt install xfce4 -y
 
 ## rename hostname in /etc/hostname
 
