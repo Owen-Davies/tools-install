@@ -49,6 +49,7 @@ mkdir ~/source/smug
 git clone https://github.com/ivaaaan/smug.git ~/source/smug
 cd ~/source/smug
 go install
+sudo cp ~/source/smug/completion/smug.bash /etc/bash_completion.d/
 
 #################################################################
 # lazygit
