@@ -15,9 +15,10 @@ sudo apt-get install -y \
 ## set vim as default git editor
 git config --global core.editor "vim"
 
-sudo update-alternatives --set editor /usr/bin/vim
+#sudo update-alternatives --set editor /usr/bin/vim
 
 ## Install vundle
+mkdir ~/.vim/bundle
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 ### Install vundle plugins
