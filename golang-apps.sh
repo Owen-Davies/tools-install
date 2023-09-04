@@ -1,15 +1,3 @@
-################################################################
-# Install golang
-#################################################################
-## Download go
-wget https://golang.org/dl/go1.17.6.linux-amd64.tar.gz
-
-## Extract to /usr/local/go
-sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.17.6.linux-amd64.tar.gz
-
-## Add /usr/local/go/bin to the PATH environment variable
-export PATH=$PATH:/usr/local/go/bin
-
 ## Verify go is installed
 go version
 
@@ -22,7 +10,7 @@ go install github.com/jesseduffield/lazydocker@latest
 ########################################################
 # K9s - Kubernetes CLI To Manage Your Clusters In Style!
 ########################################################
-go get -u github.com/derailed/k9s
+go install github.com/derailed/k9s@latest
 
 ########################################################
 # Vimwiki-GoDown - Vimwiki-GoDown is a Markdown to HTML converter for .md files that were created with Vimwiki.
