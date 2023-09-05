@@ -68,3 +68,4 @@ go install github.com/taylorskalyo/goreader@latest
 #################################################################
 go get github.com/jessfraz/tdash
 
+go install github.com/cheat/cheat/cmd/cheat@latest
