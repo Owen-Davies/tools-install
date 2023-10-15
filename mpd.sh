@@ -7,7 +7,6 @@ sudo apt-get install mpd
 
 ### if mpd is running stop it first
 
-/etc/init.d/mpd stop
-sudo update-rc.d mpd disable
+sudo systemctl stop mpd
 
 

@@ -1,3 +1,10 @@
+
+# Import public gpg 
+# set trust to 5
+# install scdaemon so gpg & ssh work
+sudo apt-get install scdaemon -y
+
+
 # Instructions from https://developers.yubico.com/yubico-pam/Authentication_Using_Challenge-Response.html
 
 # Setting up PAM authentication

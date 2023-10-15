@@ -1,6 +1,9 @@
 ## Verify go is installed
 go version
 
+# Install lf - file manager
+env CGO_ENABLED=0 go install -ldflags="-s -w" github.com/gokcehan/lf@latest
+
 #################################################################
 # Install lazydocker
 # A simple terminal UI for both docker and docker-compose, written in Go with the gocui library.
@@ -27,13 +30,12 @@ go get "github.com/maqiv/vimwiki-godown"
 ########################################################
 go get github.com/cointop-sh/cointop
 
-
 ########################################
 # Install smug 
 # - a tmux session manager written in go
 ########################################
 
-mkdir ~/source/smug
+mkdir -p ~/source/smug
 git clone https://github.com/ivaaaan/smug.git ~/source/smug
 cd ~/source/smug
 go install

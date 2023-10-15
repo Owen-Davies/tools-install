@@ -13,6 +13,7 @@ sudo apt-get install -y \
   gnupg \
   pass \
   xcape \
-  vlc
-  ffmpeg
-  v4l2loopback-dkms
+  vlc \
+
+sh ./node.sh
+

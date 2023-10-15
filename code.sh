@@ -3,8 +3,8 @@ set -e
 
 VERSION=${1:-"0.0.0"}
 INSTALL_DIR=${2:-"$HOME/.local/bin"}
-CMD=code
-NAME=Visual STudio Code
+CMD="code"
+NAME="Visual Studio Code"
 
 echo -e "\e[34m»»» 📦 \e[32mInstalling \e[33m$NAME v$VERSION\e[0m ..."
 

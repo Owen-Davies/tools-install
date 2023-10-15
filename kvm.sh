@@ -1,20 +1,18 @@
 #!/bin/bash
 
-## Instructions from https://tecmint.com/install-kvm-on-ubuntu/
+## Instructions from https://linuxgenie.net/how-to-install-kvm-on-ubuntu-22-04/ 
 
-egrep -c '(vmx|svm' /proc/cpuinfo
+egrep -c '(vmx|svm)' /proc/cpuinfo
 
-// if above is greater than 1 then virtualisation is supported
+sudo apt-get install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils -y
 
-sudo apt-get install kvm-ok
+kvm-ok
 
-sudo kvm-ok
-// if output = KVM acceleration can be used
-
-sudo apt install -y qemu qemu-kvm libvirt-daemon libvirt-clients bridge-utils virt-manager
-
+sudo systemctl enable libvirtd
+sudo systemctl start libvirtd
 sudo systemctl status libvirtd
 
-sudo systemctl enable --now libvirtd
+sudo usermod -aG kvm ${USER} 
+sudo usermod -aG libvirt ${USER}
 
-#lsmod | grep -i kvm
+sudo nano /etc/netplan/01-netcfg.yaml
