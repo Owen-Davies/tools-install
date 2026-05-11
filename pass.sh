@@ -10,7 +10,7 @@ echo -e "\e[34m»»» 📦 \e[32mInstalling \e[33m$NAME v$VERSION\e[0m ..."
 
 ## Install pass
 sudo apt-get install pass -y
-ln -s ~/dev/personal/pass ~/.password-store
+ln -s ~/dev/owen-davies/pass ~/.password-store
 
 ## Install pass extensions
 

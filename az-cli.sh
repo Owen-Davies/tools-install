@@ -1,14 +1,14 @@
-#!/bin/bash 
+#!/bin/bash
 set -e
+source <(curl -sSL https://raw.githubusercontent.com/benc-uk/tools-install/master/_lib.sh) # Load libary from remote URL, it's safe!
 
 CMD=az
 NAME="Azure CLI"
 
-echo -e "\e[34m»»» 📦 \e[32mInstalling \e[33m$NAME\e[0m ..."
+pre_run
 
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 
 az extension add --name azure-devops
 
-echo -e "\n\e[34m»»» 💾 \e[32mInstalled to: \e[33m$(which $CMD)"
-echo -e "\e[34m»»» 💡 \e[32mVersion details: \e[39m$($CMD --version)"
+post_run

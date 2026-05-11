@@ -2,15 +2,14 @@
 set -e
 source <(curl -sSL https://raw.githubusercontent.com/benc-uk/tools-install/master/_lib.sh) # Load libary from remote URL, it's safe!
 
-GITHUB="nektos/act"
+GITHUB="open-policy-agent/opa"
 VERSION=${1:-"$(get_latest_release $GITHUB)"}
 INSTALL_DIR=${2:-"$HOME/.local/bin"}
-CMD=act
-NAME="Nektos Act"
+CMD=opa
+NAME="Open Policy Agent"
 
 pre_run
 
-curl -sSL https://github.com/$GITHUB/releases/download/v"${VERSION}"/act_Linux_x86_64.tar.gz | \
-     tar -zx -C "$INSTALL_DIR" $CMD
+curl -sSL https://github.com/$GITHUB/releases/download/v"${VERSION}"/opa_linux_amd64 -o "$INSTALL_DIR"/$CMD
 
-post_run
+post_run version

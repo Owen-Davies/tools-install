@@ -1,24 +1,16 @@
 #!/bin/bash
 set -e
+source <(curl -sSL https://raw.githubusercontent.com/benc-uk/tools-install/master/_lib.sh) # Load libary from remote URL, it's safe!
 
-get_latest_release() {
-  curl --silent "https://api.github.com/repos/$1/releases/latest" |
-  grep '"tag_name":' | sed -E 's/.*"v([^"]+)".*/\1/'
-}
-
-VERSION=${1:-"$(get_latest_release derailed/k9s)"}
+GITHUB="derailed/k9s"
+VERSION=${1:-"$(get_latest_release $GITHUB)"}
 INSTALL_DIR=${2:-"$HOME/.local/bin"}
 CMD=k9s
-NAME="k9s"
+NAME="k9s terminal UI for Kubernetes"
 
-echo -e "\e[34m»»» 📦 \e[32mInstalling \e[33m$NAME \e[35mv$VERSION\e[0m ..."
+pre_run
 
-curl -sSL "https://github.com/derailed/k9s/releases/download/v${VERSION}/k9s_Linux_x86_64.tar.gz" -o /tmp/k9s.tar.gz
-tar -xf /tmp/k9s.tar.gz -C /tmp k9s 
-mkdir -p $INSTALL_DIR
-sudo mv /tmp/k9s $INSTALL_DIR
-rm -f /tmp/k9s.tar.gz
-rm -rf tmp/k9s
+curl -sSL "https://github.com/$GITHUB/releases/download/v${VERSION}/k9s_Linux_amd64.tar.gz" | \
+  tar -zx -C "$INSTALL_DIR" $CMD
 
-echo -e "\n\e[34m»»» 💾 \e[32mInstalled to: \e[33m$(which $CMD)"
-echo -e "\e[34m»»» 💡 \e[32mVersion details: \n\e[39m$($CMD version)"
+post_run version
