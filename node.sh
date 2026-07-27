@@ -1,5 +1,7 @@
 #!/bin/bash
-source <(curl -sSL https://raw.githubusercontent.com/benc-uk/tools-install/master/_lib.sh) # Load libary from remote URL, it's safe!
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+# shellcheck disable=SC1091
+source "$DIR"/_lib.sh
 
 VERSION=${1:-"24"}
 CMD=node

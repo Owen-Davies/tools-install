@@ -1,22 +1,22 @@
 #!/bin/bash
 set -e
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+# shellcheck disable=SC1091
+source "$DIR"/_lib.sh
 
-get_latest_release() {
-  curl --silent "https://api.github.com/repos/$1/releases/latest" |
-  grep '"tag_name":' | sed -E 's/.*"v([^"]+)".*/\1/'
+get_latest_release_kustomize() {
+  curl -sSL https://api.github.com/repos/kubernetes-sigs/kustomize/releases | grep browser_download.*"linux"_"amd64" | cut -d '"' -f 4 | sort -V | tail -n 1 | cut -d/ -f 9 | cut -b 2-99
 }
 
-VERSION=${1:-"$(get_latest_release kubernetes-sigs/kustomize)"}
+GITHUB="kubernetes-sigs/kustomize"
+VERSION=${1:-"$(get_latest_release_kustomize $GITHUB)"}
 INSTALL_DIR=${2:-"$HOME/.local/bin"}
 CMD=kustomize
 NAME="kustomize"
 
-curl -sL "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv4.1.3/kustomize_v4.1.3_linux_amd64.tar.gz" -o /tmp/kustomize.tar.gz
-tar -xf /tmp/kustomize.tar.gz -C /tmp kustomize
-mkdir -p $INSTALL_DIR
-sudo mv /tmp/kustomize $INSTALL_DIR
-rm -f /tmp/kustomize.tar.gz
-rm -rf tmp/kustomize
+pre_run
 
-echo -e "\n\e[34m»»» 💾 \e[32mInstalled to: \e[33m$(which $CMD)"
-echo -e "\e[34m»»» 💡 \e[32mVersion details: \e[39m$($CMD version)"
+curl -sL "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv${VERSION}/kustomize_v${VERSION}_linux_amd64.tar.gz" | \
+  tar -xz -C "$INSTALL_DIR" kustomize
+
+post_run version

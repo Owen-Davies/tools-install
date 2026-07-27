@@ -1,16 +1,18 @@
 #!/bin/bash 
 set -e
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+# shellcheck disable=SC1091
+source "$DIR"/_lib.sh
 
-VERSION=${1:-"0.11.1"}
+GITHUB="kubernetes-sigs/kind"
+VERSION=${1:-"$(get_latest_release $GITHUB)"}
 INSTALL_DIR=${2:-"$HOME/.local/bin"}
 CMD=kind
-NAME=kind
+NAME="Kind, run Kubernetes in Docker"
 
-echo -e "\e[34m»»» 📦 \e[32mInstalling \e[33m$NAME v$VERSION\e[0m ..."
+pre_run
 
-curl -sSLo /tmp/kind https://kind.sigs.k8s.io/dl/v${VERSION}/kind-linux-amd64
-chmod +x /tmp/kind
-mv /tmp/kind ${INSTALL_DIR}/kind
+curl -sSL https://github.com/$GITHUB/releases/download/v"${VERSION}"/kind-linux-amd64 -o "$INSTALL_DIR"/$CMD
+chmod +x "$INSTALL_DIR"/$CMD
 
-echo -e "\n\e[34m»»» 💾 \e[32mInstalled to: \e[33m$(which $CMD)"
-echo -e "\e[34m»»» 💡 \e[32mVersion details: \e[39m$($CMD --version)"
+post_run

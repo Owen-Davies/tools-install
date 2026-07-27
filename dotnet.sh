@@ -1,20 +1,22 @@
 #!/bin/bash 
 set -e
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+# shellcheck disable=SC1091
+source "$DIR"/_lib.sh
 
-VERSION=${1:-"5.0"}
+VERSION=${1:-"8.0"}
 CMD=dotnet
-NAME="Dotnet Core SDK"
+NAME="Dotnet SDK"
 
-echo -e "\e[34m»»» 📦 \e[32mInstalling \e[33m$NAME \e[35mv$VERSION\e[0m ..."
+pre_run
 
-# Download the Microsoft repository GPG keys
-wget -q https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb -O /tmp/packages-microsoft-prod.deb
-# Register the Microsoft repository GPG keys
-sudo dpkg -i /tmp/packages-microsoft-prod.deb
-rm -f /tmp/packages-microsoft-prod.deb
+#
+# 2024 - Removed the Microsoft repo, as the SDK is available in the default Ubuntu sources
+#
 
 sudo apt-get update -qq
-sudo apt-get install -y -qq dotnet-sdk-$VERSION
+sudo apt-get install -y -qq dotnet-sdk-"$VERSION"
+sudo apt-get install -y -qq aspnetcore-runtime-"$VERSION"
+sudo apt-get install -y -qq dotnet-runtime-"$VERSION"
 
-echo -e "\n\e[34m»»» 💾 \e[32mInstalled to: \e[33m$(which $CMD)"
-echo -e "\e[34m»»» 💡 \e[32mVersion details: \e[39m$($CMD --info)"
+post_run --version

@@ -1,0 +1,7 @@
+# Vim swap files
+*.swp
+*.swo
+*~
+
+# Artefact dropped by older code.sh runs
+packages.microsoft.gpg

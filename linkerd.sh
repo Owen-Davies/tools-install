@@ -1,21 +1,23 @@
 #!/bin/bash
 set -e
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+# shellcheck disable=SC1091
+source "$DIR"/_lib.sh
 
-get_latest_release() {
+get_latest_release_linkerd() {
   curl --silent "https://api.github.com/repos/$1/releases" |
   grep -Po -m 1 '"tag_name": "stable-([\d.]+)"' | sed -E 's/.*"stable-([^"]+)".*/\1/'
 }
 
-VERSION=${1:-"$(get_latest_release linkerd/linkerd2)"}
+GITHUB="linkerd/linkerd2"
+VERSION=${1:-"$(get_latest_release_linkerd $GITHUB)"}
 INSTALL_DIR=${2:-"$HOME/.local/bin"}
 CMD=linkerd
 NAME="Linkerd Service Mesh"
 
-echo -e "\e[34m»»» 📦 \e[32mInstalling \e[33m$NAME \e[35m$VERSION\e[0m ..."
+pre_run
 
-mkdir -p $INSTALL_DIR
-curl -sSL https://github.com/linkerd/linkerd2/releases/download/stable-${VERSION}/linkerd2-cli-stable-${VERSION}-linux-amd64 -o $INSTALL_DIR/linkerd
-chmod +x $INSTALL_DIR/linkerd
+curl -sSL https://github.com/linkerd/linkerd2/releases/download/stable-"${VERSION}"/linkerd2-cli-stable-"${VERSION}"-linux-amd64 -o "$INSTALL_DIR"/linkerd
+chmod +x "$INSTALL_DIR"/linkerd
 
-echo -e "\n\e[34m»»» 💾 \e[32mInstalled to: \e[33m$(which $CMD)"
-echo -e "\e[34m»»» 💡 \e[32mVersion details: \e[39m$($CMD version)"
+post_run version --client
