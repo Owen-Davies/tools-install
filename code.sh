@@ -7,6 +7,10 @@ source "$DIR"/_lib.sh
 CMD="code"
 NAME="Visual Studio Code (desktop)"
 
+# Desktop package only. On the droplet, VS Code Server installs itself on the
+# first Remote-SSH connect; under WSL2, VS Code runs on the Windows side.
+require_gui
+
 # NOTE. Deliberately NOT the same as benc-uk's code.sh, which installs the
 # headless VS Code CLI tarball. This machine runs a desktop, so install the
 # full app from the Microsoft apt repo.

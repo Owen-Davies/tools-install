@@ -1,6 +1,13 @@
 #!/bin/bash
 set -e
 
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+# shellcheck disable=SC1091
+source "$DIR"/_lib.sh
+
+NAME="Flatpak Applications"
+require_gui
+
 NAME="Flatpak Applications"
 echo -e "\e[34m»»» 📦 \e[32mInstalling \e[33m$NAME\e[0m ..."
 

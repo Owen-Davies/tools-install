@@ -1,6 +1,14 @@
 #!/bin/bash 
 set -e
 
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+# shellcheck disable=SC1091
+source "$DIR"/_lib.sh
+
+NAME=xrdp
+require_systemd
+require_no_wsl
+
 VERSION=${1:-"0.0.0"}
 INSTALL_DIR=${2:-"$HOME/.local/bin"}
 CMD=xrdp

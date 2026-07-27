@@ -1,0 +1,25 @@
+# Desktop extras -- run AFTER base.txt. Laptop/workstation only.
+# Everything here needs a display, a physical keyboard, or systemd.
+
+# --- desktop packages --------------------------------------------------------
+base-laptop.sh
+base-xserver.sh
+
+# --- editors and GUI apps ----------------------------------------------------
+code.sh
+vscode-extensions.sh
+lens.sh
+
+# --- app stores --------------------------------------------------------------
+# Both are guarded internally, so they degrade to a skip if the store is absent.
+snap-apps.sh
+flatpak-apps.sh
+
+# --- hardware ----------------------------------------------------------------
+keyd.sh
+yubikey.sh
+pass.sh
+
+# --- heavier SDKs, only worth the disk on the laptop -------------------------
+dotnet.sh
+deno.sh

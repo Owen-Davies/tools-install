@@ -27,8 +27,7 @@ sudo apt-get install -y \
   net-tools \
   htop
 
-# Chain on to the editor/shell/language basics
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-bash "$DIR"/vim.sh
-bash "$DIR"/tmux.sh
-bash "$DIR"/golang.sh
+# NOTE. This used to chain on to vim.sh, tmux.sh and golang.sh. It no longer
+# does: install-profile.sh lists them in profiles/base.txt, and the chaining
+# meant each one ran twice (golang.sh appended to ~/.bashrc on every run).
+# The manifest is the single ordering authority now.

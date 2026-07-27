@@ -21,6 +21,9 @@ sudo rm -rf /usr/local/go
 rm -rf /tmp/golang.tar.gz
 sudo mv go /usr/local
 
-printf '\nexport PATH=$PATH:/usr/local/go/bin\n' >> ~/.bashrc 
+# NOTE. This used to append `export PATH=$PATH:/usr/local/go/bin` to ~/.bashrc
+# on EVERY run. ~/.bashrc is a symlink into the dotfiles repo, so that quietly
+# wrote duplicate lines into a tracked file. dotfiles/env.sh already puts
+# /usr/local/go/bin on PATH, so nothing is needed here.
 
 post_run version

@@ -1,0 +1,6 @@
+# Headless extras -- run AFTER base.txt. DigitalOcean droplet, containers.
+#
+# No code.sh: VS Code Server installs itself on the first Remote-SSH connect,
+# so installing the desktop package here would be pure wasted disk.
+
+edit.sh

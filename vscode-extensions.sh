@@ -3,7 +3,17 @@ set -e
 
 NAME="VS Code Extensions"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-EXTENSIONS_FILE="${1:-"$SCRIPT_DIR/../dotfiles/install/vscode-extensions.txt"}"
+# Prefer ~/dotfiles, which install.sh guarantees is a symlink to the repo, and
+# only then fall back to assuming the two repos are cloned as siblings. That
+# sibling assumption is the reason this script was the one hard coupling
+# between the repos.
+if [ -n "$1" ]; then
+  EXTENSIONS_FILE="$1"
+elif [ -f "${DOTFILES_DIR:-$HOME/dotfiles}/install/vscode-extensions.txt" ]; then
+  EXTENSIONS_FILE="${DOTFILES_DIR:-$HOME/dotfiles}/install/vscode-extensions.txt"
+else
+  EXTENSIONS_FILE="$SCRIPT_DIR/../dotfiles/install/vscode-extensions.txt"
+fi
 
 echo -e "\e[34m»»» 📦 \e[32mInstalling \e[33m$NAME\e[0m ..."
 

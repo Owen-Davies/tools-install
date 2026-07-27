@@ -16,7 +16,7 @@ echo -e "\e[34m»»» 📦 \e[32mInstalling \e[33m$NAME v$VERSION\e[0m ..."
 curl -fsSL "https://github.com/deislabs/wagi/releases/download/v$VERSION/wagi-v$VERSION-linux-amd64.tar.gz" -o /tmp/wagi.tar.gz
 tar -zxf /tmp/wagi.tar.gz -C /tmp
 mkdir -p "$INSTALL_DIR"
-sudo mv /tmp/wagi "$INSTALL_DIR"
+install -m 755 /tmp/wagi "$INSTALL_DIR/wagi"
 rm -f /tmp/wagi.tar.gz
 rm -rf /tmp/wagi
 

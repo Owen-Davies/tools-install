@@ -13,7 +13,9 @@ sudo apt-get install -y \
   gnupg \
   pass \
   xcape \
-  vlc \
+  vlc
 
-sh ./node.sh
+# node.sh is listed in profiles/base.txt, so it is not chained here any more.
+# (It used to be `sh ./node.sh` -- wrong interpreter, and cwd-relative so it
+# only worked when you happened to be standing in this directory.)
 

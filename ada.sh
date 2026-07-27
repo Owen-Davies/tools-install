@@ -21,7 +21,7 @@ INSTALL_DIR=${2:-"$HOME/.local/bin"}
 curl -sSL "https://github.com/alire-project/alire/releases/download/v${VERSION}/alr-${VERSION}-bin-linux.zip" -o /tmp/alire.zip
 unzip -o /tmp/alire.zip -d /tmp
 mkdir -p $INSTALL_DIR
-sudo mv /tmp/bin/alr $INSTALL_DIR
+install -m 755 /tmp/bin/alr "$INSTALL_DIR/alr"
 rm -rf /tmp/alr.zip
 
 # Done...

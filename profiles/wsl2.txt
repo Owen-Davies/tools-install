@@ -1,0 +1,12 @@
+# WSL2 extras -- run AFTER base.txt.
+#
+# Deliberately short. Excluded, and why:
+#   keyd.sh        needs systemd + /dev/input
+#   snap-apps.sh   snapd does not work under WSL2 without systemd
+#   flatpak-apps.sh needs a desktop and portals
+#   code.sh        VS Code runs on the Windows side over the WSL remote
+#   yubikey.sh     USB passthrough; the agent is bridged from Windows instead
+#   obs/lens/kvm/x2go/xrdp  all need a display or hardware
+
+wsl2-interop.sh
+pass.sh

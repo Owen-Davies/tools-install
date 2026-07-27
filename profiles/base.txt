@@ -1,0 +1,52 @@
+# Base tool set -- installed on EVERY machine, including the headless droplet.
+# Nothing here may require a display, systemd, snap or flatpak.
+#
+# Format: one script per line. Trailing args are passed through.
+#   #        comment
+#   !script  must succeed; abort the whole run if it fails
+# Order matters: the first mention of a script wins, later duplicates are skipped.
+
+# --- core packages -----------------------------------------------------------
+# base.sh no longer chains vim/tmux/golang -- this file is the single ordering
+# authority now, and the chaining made them run twice.
+!base.sh
+
+# --- editor and shell --------------------------------------------------------
+vim.sh
+tmux.sh
+fzf.sh
+ohmyzsh.sh
+
+# --- languages and runtimes --------------------------------------------------
+golang.sh
+rust.sh
+node.sh
+node-tools.sh
+python-tools.sh
+
+# --- containers and kubernetes -----------------------------------------------
+docker.sh
+kubectl.sh
+helm.sh
+k9s.sh
+kind.sh
+kube-tools.sh
+kustomize.sh
+flux.sh
+
+# --- infrastructure and cloud ------------------------------------------------
+terraform.sh
+tflint.sh
+az-cli.sh
+azcopy.sh
+azbrowse.sh
+azd.sh
+
+# --- dev tooling -------------------------------------------------------------
+gh.sh
+act.sh
+just.sh
+air.sh
+golangci-lint.sh
+mkcert.sh
+sops.sh
