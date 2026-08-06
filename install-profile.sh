@@ -94,8 +94,20 @@ run_manifest() {
     fi
 
     echo -e "\e[34m»»» ▶ \e[33mRunning $script$args\e[0m"
+    # `< /dev/null` is load-bearing. This loop reads the manifest on stdin
+    # (`done < "$mf"`), and without the redirect each script inherits that same
+    # stdin — so the first one that reads it swallows the rest of the manifest
+    # and the loop just ends, early and silently.
+    #
+    # That is not hypothetical: on a fresh VM this ran base.sh, vim.sh, edit.sh
+    # and stopped, reporting "OK: 2 FAILED: 1" as though it were done. 3 of 32
+    # scripts, no error, exit status fine. apt inside base.sh was the consumer.
+    #
+    # It hides on an already-provisioned box, because the scripts are idempotent
+    # and mostly no-op early without touching stdin. It only bites on the run
+    # that matters — the first one.
     # shellcheck disable=SC2086
-    if bash "$SCRIPT_DIR/$script" $args; then
+    if bash "$SCRIPT_DIR/$script" $args < /dev/null; then
       OK+=("$script")
     else
       echo -e "\e[31m  ✖ $script failed\e[0m"
