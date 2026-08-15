@@ -22,6 +22,14 @@ git_clone_or_pull https://github.com/junegunn/fzf.git ~/.fzf
 
 sudo apt-get install -y ripgrep universal-ctags silversearcher-ag fd-find
 
+# Debian/Ubuntu ship fd-find's binary as `fdfind` (name clash with an unrelated
+# `fd` package). Symlinking the plain name into ~/.local/bin makes it resolve
+# both interactively and from non-interactive scripts, which shell aliases
+# cannot do.
+if command -v fdfind >/dev/null 2>&1 && [ ! -e "$HOME/.local/bin/fd" ]; then
+  mkdir -p "$HOME/.local/bin"
+  ln -s "$(command -v fdfind)" "$HOME/.local/bin/fd"
+fi
 
 echo -e "\n\e[34m»»» 💾 \e[32mInstalled to: \e[33m$(which $CMD)"
 echo -e "\e[34m»»» 💡 \e[32mVersion details: \e[39m$($CMD --version)"

@@ -29,15 +29,18 @@ Some scripts which install system wide components such as Docker or the Azure CL
 - **azd.sh** - Azure Dev CLI
 - **az-cli.sh** - Azure CLI (+ azure-devops extension)
 - **base.sh** - Various Linux Utilities
+- **bat.sh** - bat (cat with syntax highlighting)
 - **bicep.sh** - Azure Bicep
 - **bun.sh** - Bun.js
 - **clusterctl.sh** - K8S Cluster API
 - **code.sh** - VS Code CLI
 - **dapr.sh** - Dapr CLI
+- **delta.sh** - delta (syntax-highlighting git pager)
 - **deno.sh** - Deno JavaScript Runtime
 - **devcontainer-cli.sh** - Dev Container CLI
 - **docker.sh** - Docker Engine & CLI
 - **dotnet.sh** - Dotnet SDK
+- **entr.sh** - entr (rerun a command when files change)
 - **flux.sh** - FluxCD v2
 - **functions.sh** - Azure Functions Core Tools
 - **gh.sh** - GitHub CLI
@@ -71,3 +74,4 @@ Some scripts which install system wide components such as Docker or the Azure CL
 - **tflint.sh** - Tflint Terraform Linter
 - **wasm-pack.sh** - WASM Pack
 - **yarn.sh** - Yarn
+- **zoxide.sh** - zoxide (smarter cd)

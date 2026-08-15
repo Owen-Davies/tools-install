@@ -16,6 +16,10 @@ vim.sh
 tmux.sh
 fzf.sh
 ohmyzsh.sh
+bat.sh
+zoxide.sh
+entr.sh
+delta.sh
 
 # --- languages and runtimes --------------------------------------------------
 golang.sh
