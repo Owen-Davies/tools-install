@@ -24,6 +24,7 @@ Some scripts which install system wide components such as Docker or the Azure CL
 
 - **act.sh** - Nektos Act
 - **air.sh** - Air - Hot reloader for Go
+- **appimagelauncher.sh** - AppImageLauncher
 - **azbrowse.sh** - Azure Browse
 - **azcopy.sh** - Azure Copy
 - **azd.sh** - Azure Dev CLI
@@ -36,8 +37,10 @@ Some scripts which install system wide components such as Docker or the Azure CL
 - **dapr.sh** - Dapr CLI
 - **deno.sh** - Deno JavaScript Runtime
 - **devcontainer-cli.sh** - Dev Container CLI
+- **dmenu.sh** - dmenu, built from suckless.org source
 - **docker.sh** - Docker Engine & CLI
 - **dotnet.sh** - Dotnet SDK
+- **dwm.sh** - dwm window manager, built from suckless.org source
 - **flux.sh** - FluxCD v2
 - **functions.sh** - Azure Functions Core Tools
 - **gh.sh** - GitHub CLI
@@ -54,20 +57,30 @@ Some scripts which install system wide components such as Docker or the Azure CL
 - **kube-tools.sh** - kubectx & kubens
 - **kubectl.sh** - Kubectl
 - **kustomize.sh** - kustomize
+- **lightdm.sh** - LightDM display manager (+ GTK greeter)
 - **linkerd.sh** - Linkerd Service Mesh
 - **loophole.sh** - Loophole
+- **microsoft-edge.sh** - Microsoft Edge (stable)
+- **minecraft-launcher.sh** - Official Minecraft Launcher
 - **mkcert.sh** - mkcert Cert Utility
 - **nats.sh** - NATS Server
 - **ngrok.sh** - ngrok
 - **node-tools.sh** - Extra Node tools
 - **node.sh** - Node.js
+- **obsidian.sh** - Obsidian notes app
 - **ohmyzsh.sh** - Oh My Zsh & Powerlevel10k
 - **opa.sh** - Open Policy Agent
 - **porter.sh** - Porter
 - **powershell.sh** - PowerShell
 - **rust.sh** - Rust and Cargo
 - **sops.sh** - Mozilla Sops
+- **st.sh** - st terminal, built from suckless.org source
+- **steam.sh** - Steam (multiverse + i386)
+- **tailscale.sh** - Tailscale
+- **teamviewer.sh** - TeamViewer
 - **terraform.sh** - Terraform
 - **tflint.sh** - Tflint Terraform Linter
+- **virtualbox.sh** - Oracle VirtualBox
 - **wasm-pack.sh** - WASM Pack
 - **yarn.sh** - Yarn
+- **zoom.sh** - Zoom

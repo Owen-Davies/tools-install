@@ -1,0 +1,35 @@
+# Host-specific extras for the x13 ThinkPad, run after profiles/desktop.txt.
+#
+# Built for the Server+dwm rebuild of this laptop (no ubuntu-desktop/GNOME):
+# desktop.txt already covers keyd/yubikey/pass/code/snap/flatpak/dotnet/deno
+# without depending on GNOME being present -- everything here is either dwm's
+# own session stack (nothing else provides one without GNOME's gdm3), or apps
+# from the old GNOME install that don't have a home in any generic profile.
+#
+# Order matters: X11 + window manager + display manager before apps that
+# assume a GUI exists.
+
+# --- window manager / session (required -- no session without these) ---------
+# Vanilla dwm/st/dmenu -- no config patches. To apply the personal config
+# (modkey, gaps, colours, keybinds), run `dwm-apply-config` from dotfiles/bin
+# once dotfiles' own install.sh has run (needs ~/bin on PATH). Not wired in
+# here: install-profile.sh's manifest format only resolves script names
+# within this repo, and dotfiles may not have run yet at this point.
+!dwm.sh
+st.sh
+dmenu.sh
+!lightdm.sh
+
+# --- apps needing a vendor apt repo, PPA, or direct .deb ----------------------
+virtualbox.sh
+steam.sh
+microsoft-edge.sh
+teamviewer.sh
+zoom.sh
+obsidian.sh
+minecraft-launcher.sh
+appimagelauncher.sh
+tailscale.sh
+
+# --- everything else plain-apt-installable ------------------------------------
+x13-extra-apt.sh
