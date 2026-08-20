@@ -9,7 +9,7 @@ sudo apt-get update -y -qq
 sudo apt-get install -y \
   build-essential \
   feh \
-  conky \
+  conky-all \
   gnupg \
   pass \
   xcape \
