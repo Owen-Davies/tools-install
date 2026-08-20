@@ -10,7 +10,9 @@ VERSION="n/a"
 
 pre_run
 
-sudo apt-get install -y libx11-dev libxft-dev
+# build-essential for a C compiler -- see dwm.sh for why this isn't left to
+# base-laptop.sh alone.
+sudo apt-get install -y build-essential libx11-dev libxft-dev
 
 git_clone_or_pull https://git.suckless.org/st ~/source/st
 cd ~/source/st

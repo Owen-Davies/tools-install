@@ -10,9 +10,12 @@ VERSION="n/a"
 
 pre_run
 
-# X11 headers dwm's Makefile links against; not pulled in by anything else on
-# a bare Server install.
-sudo apt-get install -y libx11-dev libxft-dev libxinerama-dev
+# build-essential for a C compiler, plus the X11 headers dwm's Makefile links
+# against -- neither pulled in by anything else on a bare Server install.
+# base-laptop.sh also installs build-essential, but it isn't a `!required`
+# manifest entry, so a transient failure there silently leaves this compile
+# broken; installing it here too means dwm.sh doesn't depend on that ordering.
+sudo apt-get install -y build-essential libx11-dev libxft-dev libxinerama-dev
 
 git_clone_or_pull https://git.suckless.org/dwm ~/source/dwm
 cd ~/source/dwm
