@@ -2,7 +2,11 @@
 # Everything here needs a display, a physical keyboard, or systemd.
 
 # --- desktop packages --------------------------------------------------------
-base-laptop.sh
+# base-laptop.sh required: it's the only thing that installs build-essential,
+# and dwm.sh/st.sh/dmenu.sh in hosts/*.txt need a compiler. A silent failure
+# here used to surface much later as a confusing `cc: No such file or
+# directory` from a `!required` script instead of right here.
+!base-laptop.sh
 base-xserver.sh
 
 # --- editors and GUI apps ----------------------------------------------------
